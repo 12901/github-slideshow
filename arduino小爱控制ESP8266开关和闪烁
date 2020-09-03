@@ -1,0 +1,257 @@
+#define BLINKER_WIFI //用于连接WiFi和刷新
+#define BLINKER_MIOT_LIGHT //用于支持小爱同学识别
+#define BUTTON_1“ ButtonKey” //用于处理按键收到的数据模型函数
+#include <Blinker.h>
+
+char auth [] =“ 1290173309”; //点灯科技密钥，注册时最好选阿里云服务器，不然小爱经常控制不了
+char ssid [] =“ QQ1290173309”; // WiFi名
+char pswd [] =“ QQ1290173309“; // WiFi密码
+
+GPIO = 0; //定义信号输出指针为GPIO / 0
+//新建组件对象
+BlinkerButton Button1（“ btn-vk3”）; // APP按键指向
+//单击BlinkerAPP按键即会执行该函数
+void button1_callback（常量字符串和状态） {
+BLINKER_LOG（“ get button state：”，state）;
+if（state ==“ on”）{
+Button1.color（“＃00FF7F”）; //设置按键开启后显示图标的颜色
+Button1.print（“ on”）; //反馈开关状态
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+
+} else if(state=="off"){
+    Button1.print("off"); // 反馈开关状态
+    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(GPIO, HIGH);
+    
+}
+}
+
+void miotPowerState（const String＆state）//小爱电源类操作的副本函数：
+{
+BLINKER_LOG（“ need set power state：”，state）;
+
+如果（状态== BLINKER_CMD_ON）
+{
+BlinkerMIOT.powerState（“ on”）; //用于反馈给小爱当前状态
+BlinkerMIOT.print（）;
+digitalWrite（GPIO，LOW）;
+digitalWrite（LED_BUILTIN，LOW）;
+
+}
+
+否则if（state == BLINKER_CMD_OFF）
+{
+BlinkerMIOT.powerState（“ off”）; //用于反馈给小爱当前状态
+BlinkerMIOT.print（）;
+digitalWrite（GPIO，HIGH）;
+digitalWrite（LED_BUILTIN，HIGH）;
+
+}
+}
+
+void miotMode（uint8_t mode）//小爱灯光类操作的副本函数：
+{
+BLINKER_LOG（“ need set mode：”，mode）;
+if（mode == BLINKER_CMD_MIOT_DAY）{//日光模式
+BlinkerMIOT.powerState（“ on”）; //用于反馈给小爱当前状态
+BlinkerMIOT.print（）;
+digitalWrite（LED_BUILTIN，LOW）; //
+闪烁5.5秒digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，LOW）;
+digitalWrite（GPIO，LOW）;
+延迟（100）;
+digitalWrite（LED_BUILTIN，HIGH）;
+digitalWrite（GPIO，HIGH）;
+
+}
+ else if (mode == BLINKER_CMD_MIOT_TV) {//电视模式
+    BlinkerMIOT.powerState("on");//用于反馈给小爱当前状态
+    BlinkerMIOT.print();
+    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(GPIO, LOW);
+    
+}
+BlinkerMIOT.mode(mode);
+BlinkerMIOT.print();
+}
+void setup（）{
+//初始化串口，并打开调试信息，调试用可以删除
+Serial.begin（115200）;
+BLINKER_DEBUG.stream（Serial）;
+pinMode（LED_BUILTIN，OUTPUT）; //
+初始化LED digitalWrite（LED_BUILTIN，HIGH）; //初始化完成后设置为高替代插入灭灯
+
+//初始化IO
+pinMode（GPIO，OUTPUT）; //初始化IO引脚
+digitalWrite（GPIO，HIGH）; //初始化完后设置为高替代
+
+//初始化信号灯
+Blinker.begin（AUTH，SSID，PSWD）; //初始化无线函数
+Button1.attach（button1_callback）; //按键回调函数
+BlinkerMIOT.attachPowerState（miotPowerState）; //小爱电源回调函数
+BlinkerMIOT.attachMode（ miotMode）; ///小爱灯光模式附加函数
+}
+void loop（）{
+Blinker.run（）;
+}
